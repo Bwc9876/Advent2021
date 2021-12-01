@@ -1,0 +1,13 @@
+.replit
+venv
+.vscode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+pip-log.txt
+pip-delete-this-directory.txt
+*.log
+.idea
+poetry.lock
+pyproject.toml
