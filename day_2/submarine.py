@@ -5,16 +5,18 @@ class Submarine:
     # Commands
 
     def up(self, amount: float):
-        self.depth -= amount
+        self.aim -= amount
 
     def down(self, amount: float):
-        self.depth += amount
+        self.aim += amount
 
     def forward(self, amount: float):
         self.horizontal += amount
+        self.depth += self.aim * amount
 
     def backward(self, amount: float):
         self.horizontal -= amount
+        self.depth -= self.aim * amount
 
     commands = {
         'up': up,
@@ -26,13 +28,15 @@ class Submarine:
     def __init__(self):
         self.horizontal = 0
         self.depth = 0
+        self.aim = 0
 
     def process_command(self, command):
         split_command = command.split(" ", 1)
         operator = split_command[0]
         args = [float(x) for x in split_command[1].split(" ")]
         try:
-            self.commands[operator](*args)
+            # noinspection PyArgumentList
+            self.commands[operator](self, *args)
         except KeyError:
             print("Invalid Operator: ", operator, "!")
 
@@ -45,7 +49,7 @@ class Submarine:
 
 
 if __name__ == "__main__":
-    input_list = get_input_list("2_1.txt")
+    input_list = get_input_list("2.txt")
     sub = Submarine()
     sub.control(input_list)
     print("Coordinates Are: ", sub.get_coords())

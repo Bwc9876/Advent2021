@@ -65,6 +65,6 @@ def count_window_increase(input_entries: list[int]) -> int:
 
 
 if __name__ == "__main__":
-    raw_list = get_input_list("1_2.txt")
+    raw_list = get_input_list("1.txt")
     input_list = [int(x) for x in raw_list]
     print("Total increases: ", count_window_increase(input_list))
