@@ -1,5 +1,6 @@
 from utils import get_input_list
 
+
 class Submarine:
 
     # Commands
@@ -41,8 +42,8 @@ class Submarine:
             print("Invalid Operator: ", operator, "!")
 
     def control(self, command_list):
-            for command in command_list:
-                self.process_command(command)
+        for command in command_list:
+            self.process_command(command)
 
     def get_coords(self):
         return self.depth * self.horizontal
