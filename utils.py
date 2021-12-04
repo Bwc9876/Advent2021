@@ -12,7 +12,16 @@ def get_input_list(filename: str) -> list[str]:
         return file.readlines()
 
 
-def bin_to_dec(input_bin: str):
+def bin_to_dec(input_bin: str) -> int:
+    """
+        Converts a binary number to decimal
+
+        :param input_bin: The binary to parse
+        :type input_bin: str
+        :returns: The decimal number the given binary represents
+        :rtype: int
+    """
+
     output_dec = 0
     for index, number in enumerate(reversed(input_bin)):
         output_dec += int(number) * (2 ** index)
