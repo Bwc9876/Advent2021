@@ -1,27 +1,32 @@
-from math import floor
-
 from utils import get_input_list
 
 
-class Fish:
-
-    def __init__(self, initial_count=8):
-        self.initial_value = initial_count
-
-    def get_after_days(self, days):
-        return (floor(days / 7) ** (days / 7 - 8)) - self.initial_value
-
-
 def fish_count(raw_starting_fish, days=80):
-    fishes = [Fish(initial_count=int(x)) for x in raw_starting_fish.split(",")]
-    total = len(fishes)
-    for fish in fishes:
-        total += fish.get_after_days(days)
-    return total
+    """
+        Counts fish after a specified number of days
+
+        :param raw_starting_fish: Raw list of starting fish
+        :type raw_starting_fish: str
+        :param days: Number of days to simulate
+        :type days: int
+        :returns: How many fish there are after the days have passed
+        :rtype: int
+    """
+
+    starting_fish = [int(x) for x in raw_starting_fish.split(',')]
+    fishes = [0 for _ in range(9)]
+    for x in starting_fish:
+        fishes[x] += 1
+    for day in range(1, days + 1):
+        reset_fish = fishes.pop(0)
+        fishes[6] += reset_fish
+        fishes.append(reset_fish)
+    print("\n")
+    return sum(fishes)
 
 
 if __name__ == "__main__":
-    DAYS = 18
+    DAYS = 256
     raw_fish = get_input_list("6.txt")[0]
     print(f"Number of fish after {DAYS} days:", fish_count(raw_fish, days=DAYS))
 
