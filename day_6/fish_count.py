@@ -21,7 +21,6 @@ def fish_count(raw_starting_fish, days=80):
         reset_fish = fishes.pop(0)
         fishes[6] += reset_fish
         fishes.append(reset_fish)
-    print("\n")
     return sum(fishes)
 
 
