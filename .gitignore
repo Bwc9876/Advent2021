@@ -1,4 +1,5 @@
 .replit
+.breakpoints
 venv
 .vscode
 __pycache__/
